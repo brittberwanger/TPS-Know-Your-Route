@@ -1,0 +1,13 @@
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vs
+
+# test console
+src/KnowYourRouteConsole/*
+
+# DNX
+project.lock.json
+artifacts/

@@ -2,6 +2,7 @@
 {
     public enum StateCode
     {
+        Unspecified = 0,
         AL,
         AK,
         AR,

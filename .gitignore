@@ -1,13 +1,18 @@
-# User-specific files
+# USER-SPECIFIC FILES
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 *.vs
 
-# test console
+# TEST CONSOLE
+*.sln
 src/KnowYourRouteConsole/*
 
 # DNX
 project.lock.json
 artifacts/
+
+# OUTPUT
+[Bb]in/
+[Oo]bj/

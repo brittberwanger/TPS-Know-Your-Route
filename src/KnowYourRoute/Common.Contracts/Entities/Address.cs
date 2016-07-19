@@ -11,9 +11,14 @@ namespace KnowYourRoute.Common.Contracts.Entities
         public StateCode StateCode { get; set; }
         public string PostalCode { get; set; }
 
-        public string GetObfuscatedStreetAddress1()
+        public bool IsValid => isValid();
+
+        private bool isValid()
         {
-            throw new NotImplementedException();
+            return !string.IsNullOrWhiteSpace( StreetAddress1 )
+                && !string.IsNullOrWhiteSpace( City )
+                && StateCode != StateCode.Unspecified
+                && !string.IsNullOrWhiteSpace( PostalCode );
         }
     }
 }

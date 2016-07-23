@@ -3,10 +3,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using KnowYourRoute.Directions.Contracts.Maps.Entities;
 using KnowYourRoute.Directions.Contracts.Maps.Interfaces;
-using KnowYourRoute.Directions.Service.Configuration;
-using KnowYourRoute.Directions.Service.Helpers;
 using KnowYourRoute.Directions.Service.Maps.Enumerations;
 using KnowYourRoute.Directions.Service.Maps.Validation;
+using KnowYourRoute.Directions.Common.Contracts.UriBuilders;
+using KnowYourRoute.Directions.Contracts.Common.Configuration;
 
 namespace KnowYourRoute.Directions.Service.Maps.Services
 {

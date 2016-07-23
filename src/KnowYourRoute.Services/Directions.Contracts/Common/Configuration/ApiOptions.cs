@@ -1,4 +1,4 @@
-﻿namespace KnowYourRoute.Directions.Service.Configuration
+﻿namespace KnowYourRoute.Directions.Contracts.Common.Configuration
 {
     public interface ApiOptions
     {

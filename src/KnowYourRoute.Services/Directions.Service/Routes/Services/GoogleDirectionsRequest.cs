@@ -2,10 +2,10 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using KnowYourRoute.Common.Contracts.Entities;
-using KnowYourRoute.Directions.Service.Configuration;
-using KnowYourRoute.Directions.Service.Helpers;
 using KnowYourRoute.Directions.Service.Routes.Enumerations;
 using Newtonsoft.Json;
+using KnowYourRoute.Directions.Contracts.Common.Configuration;
+using KnowYourRoute.Directions.Common.Contracts.UriBuilders;
 
 namespace KnowYourRoute.Directions.Service.Routes.Services
 {

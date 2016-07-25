@@ -1,9 +1,9 @@
 ﻿using System;
 using KnowYourRoute.Common.Contracts.Entities;
+using KnowYourRoute.Directions.Contracts.Common.UriBuilders;
 using KnowYourRoute.Directions.Contracts.Maps.Entities;
 using KnowYourRoute.Directions.Service.Routes.Enumerations;
 using KnowYourRoute.Directions.Service.Maps.Enumerations;
-using KnowYourRoute.Directions.Common.Contracts.UriBuilders;
 
 namespace KnowYourRoute.Directions.Service.Common.UriBuilders
 {

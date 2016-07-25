@@ -1,11 +1,11 @@
-﻿using KnowYourRoute.Common.Contracts.Entities;
+﻿using System;
+using System.Collections.Generic;
+using KnowYourRoute.Common.Contracts.Entities;
 using KnowYourRoute.Common.Contracts.Enumerations;
 using KnowYourRoute.School.Contracts.Entities;
 using KnowYourRoute.School.Contracts.Interfaces;
-using System;
-using System.Collections.Generic;
 
-namespace KnowYourRoute.School.Data.Repositories
+namespace KnowYourRoute.IntegrationTests.Data.Repositories
 {
     public class TestDataStudentRepository : StudentRepository
     {

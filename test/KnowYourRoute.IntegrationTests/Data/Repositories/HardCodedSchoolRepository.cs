@@ -1,11 +1,11 @@
-﻿using KnowYourRoute.School.Contracts.Interfaces;
-using KnowYourRoute.School.Contracts.Entities;
+﻿using System;
+using System.Collections.Generic;
 using KnowYourRoute.Common.Contracts.Entities;
 using KnowYourRoute.Common.Contracts.Enumerations;
-using System;
-using System.Collections.Generic;
+using KnowYourRoute.School.Contracts.Entities;
+using KnowYourRoute.School.Contracts.Interfaces;
 
-namespace KnowYourRoute.School.Data.Repositories
+namespace KnowYourRoute.IntegrationTests.Data.Repositories
 {
     public class HardCodedSchoolRepository : HighSchoolRepository
     {

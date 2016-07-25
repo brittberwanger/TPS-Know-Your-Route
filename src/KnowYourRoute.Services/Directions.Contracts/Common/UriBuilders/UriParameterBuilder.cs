@@ -4,7 +4,7 @@ using KnowYourRoute.Directions.Contracts.Maps.Entities;
 using KnowYourRoute.Directions.Service.Maps.Enumerations;
 using KnowYourRoute.Directions.Service.Routes.Enumerations;
 
-namespace KnowYourRoute.Directions.Common.Contracts.UriBuilders
+namespace KnowYourRoute.Directions.Contracts.Common.UriBuilders
 {
     public interface UriParameterBuilder
     {

@@ -9,17 +9,6 @@ namespace KnowYourRoute.School.Data.Serializers
 {
     public class FlatFileStudentSerializer
     {
-        internal const int ID_INDEX = 0;
-        internal const int BELL_TIME_INDEX = 1;
-        internal const int HIGH_SCHOOL_INDEX = 2;
-        internal const int LAST_NAME_INDEX = 3;
-        internal const int FIRST_NAME_INDEX = 4;
-        internal const int STREET_INDEX = 5;
-        internal const int CITY_INDEX = 6;
-        internal const int STATE_INDEX = 7;
-        internal const int POSTAL_CODE_INDEX = 8;
-        internal const int GRADE_LEVEL_INDEX = 9;
-
         private readonly BellTimesSerializer _bellTimesSerializer;
 
         public FlatFileStudentSerializer( BellTimesSerializer bellTimesSerializer )
@@ -37,14 +26,14 @@ namespace KnowYourRoute.School.Data.Serializers
         {
             return new Student
             {
-                ID = data[ ID_INDEX ],
-                BellTimes = constructBellTime( data[ BELL_TIME_INDEX ] ),
-                HighSchool = highSchoolFactory( data[ HIGH_SCHOOL_INDEX ] ),
-                LastName = data[ LAST_NAME_INDEX ],
-                FirstName = data[ FIRST_NAME_INDEX ],
+                ID = data[ StudentFileContents.ID_INDEX ],
+                BellTimes = constructBellTime( data[ StudentFileContents.BELL_TIME_INDEX ] ),
+                HighSchool = highSchoolFactory( data[ StudentFileContents.HIGH_SCHOOL_INDEX ] ),
+                LastName = data[ StudentFileContents.LAST_NAME_INDEX ],
+                FirstName = data[ StudentFileContents.FIRST_NAME_INDEX ],
                 Address = constructAddress( data ),
                 // TODO: Handle bad data
-                GradeLevel = data[ GRADE_LEVEL_INDEX ]
+                GradeLevel = data[ StudentFileContents.GRADE_LEVEL_INDEX ]
             };
         }
 
@@ -58,11 +47,11 @@ namespace KnowYourRoute.School.Data.Serializers
         {
             return new Address
             {
-                StreetAddress1 = data[ STREET_INDEX ],
-                City = data[ CITY_INDEX ],
+                StreetAddress1 = data[ StudentFileContents.STREET_INDEX ],
+                City = data[ StudentFileContents.CITY_INDEX ],
                 // TODO: Handle bad data
-                StateCode = (StateCode)Enum.Parse( typeof( StateCode ), data[ STATE_INDEX ] ),
-                PostalCode = data[ POSTAL_CODE_INDEX ]
+                StateCode = (StateCode)Enum.Parse( typeof( StateCode ), data[ StudentFileContents.STATE_INDEX ] ),
+                PostalCode = data[ StudentFileContents.POSTAL_CODE_INDEX ]
             };
         }
     }

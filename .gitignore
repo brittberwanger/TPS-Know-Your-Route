@@ -9,10 +9,6 @@
 *.sln
 src/KnowYourRouteConsole/*
 
-# UNIT TESTS - CANNOT DEVELOP AND RUN CURRENTLY DUE TO ENVIRONMENTAL ISSUES
-test/KnowYourRoute.UnitTests/*
-test/KnowYourRoute.UnitTestConsole/*
-
 # NCrunch
 _NCrunch_KnowYourRoute/
 KnowYourRoute.v2.ncrunchsolution

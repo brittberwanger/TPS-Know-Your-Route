@@ -5,9 +5,11 @@
 *.sln.docstates
 *.vs
 
-# TEST CONSOLE
-*.sln
-src/KnowYourRouteConsole/*
+# CONFIGURATION
+**.configuration.json
+
+# INPUT FILES
+HighSchools.json
 
 # NCrunch
 _NCrunch_KnowYourRoute/
@@ -20,4 +22,5 @@ artifacts/
 # OUTPUT
 [Bb]in/
 [Oo]bj/
+[Ff]iles/
 TestResult.xml

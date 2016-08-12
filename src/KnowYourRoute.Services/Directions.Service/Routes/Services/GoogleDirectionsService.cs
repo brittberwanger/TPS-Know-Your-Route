@@ -27,20 +27,31 @@ namespace KnowYourRoute.Directions.Service.Routes.Services
 
         public async Task<DirectionsResponse> GetDirections( DirectionsRequest directionsRequest )
         {
-            using ( var client = new HttpClient() )
+            try
             {
-                client.BaseAddress = _baseUri;
-                var response = await client.GetAsync( constructUriParameters( directionsRequest ) );
-                // TODO: Take out
-                Console.WriteLine( $"{_baseUri}{constructUriParameters( directionsRequest )}" );
+                using ( var client = new HttpClient() )
+                {
+                    client.BaseAddress = _baseUri;
+                    var response = await client.GetAsync( _baseUri + constructUriParameters( directionsRequest ) );
 
-                if ( !response.IsSuccessStatusCode )
-                    throw new Exception( $"{response.StatusCode}: {response.ReasonPhrase}" );
+                    if ( !response.IsSuccessStatusCode )
+                        throw new Exception( $"{response.StatusCode}: {response.ReasonPhrase}" );
 
-                var responseString = await response.Content.ReadAsStringAsync();
-                // TODO: Take out
-                //Console.WriteLine( responseString );
-                return JsonConvert.DeserializeObject<DirectionsResponse>( responseString );
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<DirectionsResponse>( responseString );
+                }
+            }
+            catch ( Exception ex )
+            {
+                Console.WriteLine( ex.Message );
+                Console.WriteLine( ex.StackTrace );
+                if ( ex.InnerException != null )
+                {
+                    Console.WriteLine( ex.InnerException.Message );
+                    Console.WriteLine( ex.InnerException.StackTrace );
+                }
+
+                return new DirectionsResponse();
             }
         }
 

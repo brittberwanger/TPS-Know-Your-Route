@@ -6,17 +6,19 @@ using KnowYourRoute.School.Data.Serializers;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using KnowYourRoute.School.Contracts.Validators;
+using KnowYourRoute.School.Data.Validators;
 
 namespace KnowYourRoute.School.Data.Repositories
 {
-    public class FlatFileSutdentRepository : StudentRepository
+    public class FlatFileStudentRepository : StudentRepository
     {
         private string _filepath;
         private HighSchoolRepository _highSchoolRepository;
         private FlatFileStudentSerializer _serializer;
         private IEnumerable<Student> _students;
 
-        public FlatFileSutdentRepository( string filepath, HighSchoolRepository highSchoolRepository, FlatFileStudentSerializer serailzer )
+        public FlatFileStudentRepository( string filepath, HighSchoolRepository highSchoolRepository, FlatFileStudentSerializer serailzer )
         {
             _filepath = filepath;
             _highSchoolRepository = highSchoolRepository;
@@ -49,7 +51,7 @@ namespace KnowYourRoute.School.Data.Repositories
             var csvRegex = new Regex( "(?:^|,)(\"(?:[^\"]+|\"\")*\"|[^,]*)", RegexOptions.Compiled );
             var stringList = new List<string>();
 
-            foreach ( Match match in csvRegex.Matches( input ))
+            foreach ( Match match in csvRegex.Matches( input ) )
                 stringList.Add( match.Value.TrimStart( ',' ) );
 
             return stringList.ToArray();

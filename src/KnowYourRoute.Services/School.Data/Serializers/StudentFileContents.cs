@@ -12,5 +12,6 @@ namespace KnowYourRoute.School.Data.Serializers
         public const int STATE_INDEX = 7;
         public const int POSTAL_CODE_INDEX = 8;
         public const int GRADE_LEVEL_INDEX = 9;
+        public const int EMAIL_ADDRESS_INDEX = 10;
     }
 }

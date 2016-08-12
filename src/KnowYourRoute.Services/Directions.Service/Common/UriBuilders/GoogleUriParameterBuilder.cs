@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using KnowYourRoute.Common.Contracts.Entities;
+using KnowYourRoute.Common.Contracts.Enumerations;
 using KnowYourRoute.Directions.Contracts.Common.UriBuilders;
 using KnowYourRoute.Directions.Contracts.Maps.Entities;
 using KnowYourRoute.Directions.Service.Routes.Enumerations;
@@ -12,16 +14,15 @@ namespace KnowYourRoute.Directions.Service.Common.UriBuilders
         public string ConvertLocationToUriParameters( string key, Location location )
         {
             var locationString = string.Empty;
-            if ( !string.IsNullOrWhiteSpace( location.PlaceId ) )
-                locationString = BuildPlaceId( location.PlaceId );
-            else if ( location.Coordinates.IsValid )
-                locationString = BuildCoordinates( location.Coordinates );
-            else if ( location.Address.IsValid )
+            if ( addressIsValid( location.Address ) )
                 locationString = BuildAddress( location.Address );
+            else if ( !string.IsNullOrWhiteSpace( location.PlaceId ) )
+                locationString = BuildPlaceId( location.PlaceId );
+            else if ( coordinatesAreValid( location.Coordinates ) )
+                locationString = BuildCoordinates( location.Coordinates );
             
             return $"{key}={locationString}";
         }
-
 
         public string BuildAddress( Address address )
         {
@@ -53,7 +54,7 @@ namespace KnowYourRoute.Directions.Service.Common.UriBuilders
 
         public string BuildTravelMode( TravelMode travelMode )
         {
-            return $"mode={travelMode}";
+            return $"mode={travelMode.ToString().ToLower()}";
         }
 
 
@@ -91,6 +92,35 @@ namespace KnowYourRoute.Directions.Service.Common.UriBuilders
         public string BuildMapPath( MapPath mapPath )
         {
             return $"path=weight:{mapPath.Weight}|color:{mapPath.Color}|enc:{mapPath.EncodedPolyline.Points.Replace( @"\\", @"\" )}";
+        }
+
+        public string BuildMapMarker( MapMarker mapMarker )
+        {
+            var mapMarkerUriParameter = $"markers=color:{mapMarker.Color}";
+            if ( mapMarker.Label != null )
+                mapMarkerUriParameter += $"|label:{mapMarker.Label}";
+
+            if ( coordinatesAreValid( mapMarker.Coordinates ) )
+                mapMarkerUriParameter += $"|{BuildCoordinates( mapMarker.Coordinates )}";
+            else if ( addressIsValid( mapMarker.Address ) )
+                mapMarkerUriParameter += $"|{BuildAddress( mapMarker.Address )}";
+            else
+                return string.Empty;
+
+            return mapMarkerUriParameter;
+        }
+
+        private bool coordinatesAreValid( Coordinates coordinates )
+        {
+            return coordinates.Latitude != default( decimal ) && coordinates.Longitude != default( decimal );
+        }
+
+        private bool addressIsValid( Address address )
+        {
+            return address.StreetAddress1 != default( string )
+                   && address.City != default( string )
+                   && Enum.IsDefined( typeof( StateCode ), address.StateCode )
+                   && address.PostalCode != default( string );
         }
 
 

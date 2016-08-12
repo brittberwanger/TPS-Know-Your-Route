@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KnowYourRoute")]
+[assembly: AssemblyProduct("KnowYourRouteConsole")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -16,4 +16,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the StudentID of the typelib if this project is exposed to COM
-[assembly: Guid("b2835207-18b0-4ff5-ae81-aa9bdd6c4241")]
+[assembly: Guid("772f68e6-a9ac-43ae-ac53-dd416f851af5")]

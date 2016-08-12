@@ -1,7 +1,6 @@
 ﻿using System;
 using KnowYourRoute.Directions.Contracts.Exceptions;
 using KnowYourRoute.Directions.Contracts.Maps.Entities;
-using KnowYourRoute.Directions.Contracts.Maps.Interfaces;
 using KnowYourRoute.Directions.Contracts.Validation;
 using KnowYourRoute.Directions.Service.Maps.Enumerations;
 

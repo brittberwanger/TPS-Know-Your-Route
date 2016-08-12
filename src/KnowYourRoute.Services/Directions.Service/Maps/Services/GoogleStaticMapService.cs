@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using KnowYourRoute.Directions.Contracts.Maps.Interfaces;
@@ -50,7 +51,8 @@ namespace KnowYourRoute.Directions.Service.Maps.Services
             parameters += "&" + _uriParameterBuilder.BuildMapPath( staticMapRequest.MapPath );
             parameters += "&" + _uriParameterBuilder.BuildApiKey( _apiOptions.ApiKey );
 
-            return parameters;
+            return staticMapRequest.MapMarkers.Aggregate( parameters,
+                ( current, mapMarker ) => current + "&" + _uriParameterBuilder.BuildMapMarker( mapMarker ) );
         }
     }
 }

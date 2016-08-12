@@ -1,4 +1,5 @@
-﻿using KnowYourRoute.Directions.Service.Maps.Enumerations;
+﻿using System.Collections.Generic;
+using KnowYourRoute.Directions.Service.Maps.Enumerations;
 
 namespace KnowYourRoute.Directions.Contracts.Maps.Entities
 {
@@ -11,6 +12,8 @@ namespace KnowYourRoute.Directions.Contracts.Maps.Entities
         public ImageFormat ImageFormat { get; set; }
 
         public MapPath MapPath { get; set; }
+
+        public IEnumerable<MapMarker> MapMarkers { get; set; }
     }
 
 }

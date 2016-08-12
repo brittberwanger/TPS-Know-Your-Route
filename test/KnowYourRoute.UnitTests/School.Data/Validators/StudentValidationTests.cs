@@ -21,9 +21,9 @@ namespace KnowYourRoute.UnitTests.School.Data.Validators
             var expectedMessage = "_studentData is expected to contain 10 fields";
 
             var studentData = new string[ arrayLength ];
-            var studentValidation = new StudentValidation( studentData );
+            var studentValidation = new FlatFileStudentValidation();
             
-            var exception = Assert.Catch( () => studentValidation.ValidateStudentData() );
+            var exception = Assert.Catch( () => studentValidation.StudentDataIsValid( studentData ) );
 
             validateException<InvalidDataException>( exception, expectedMessage );
         }
@@ -33,9 +33,9 @@ namespace KnowYourRoute.UnitTests.School.Data.Validators
         public void ValidateStudentData_DoesNothing_IfLengthEquals10()
         {
             var studentData = new string[ 10 ];
-            var studentValidation = new StudentValidation( studentData );
+            var studentValidation = new FlatFileStudentValidation();
             
-            var testDelegate = new TestDelegate( studentValidation.ValidateStudentData );
+            var testDelegate = new TestDelegate( () => studentValidation.StudentDataIsValid( studentData ) );
 
             Assert.DoesNotThrow( testDelegate );
         }
@@ -52,11 +52,11 @@ namespace KnowYourRoute.UnitTests.School.Data.Validators
             var expectedMessage = $"Student 123456 (Smith, Jane) has an invalid bell time: {bellTime}. Must be in hmm-hmm format";
 
             var studentData = new string[ 10 ];
-            addIdAndNameFieldsToArray( studentData );
+            addIdAndNameFieldsToArray( studentData );  
             studentData[ StudentFileContents.BELL_TIME_INDEX ] = bellTime;
-            var studentValidation = new StudentValidation( studentData );
+            var studentValidation = new FlatFileStudentValidation();
 
-            var exception = Assert.Catch( () => studentValidation.ValidateBellTime() );
+            var exception = Assert.Catch( () => studentValidation.BellTimeIsValid( studentData ) );
 
             validateException<InvalidDataException>( exception, expectedMessage );           
         }
@@ -68,9 +68,9 @@ namespace KnowYourRoute.UnitTests.School.Data.Validators
         {
             var studentData = new string[ 10 ];
             studentData[ StudentFileContents.BELL_TIME_INDEX ] = bellTime;
-            var studentValidation = new StudentValidation( studentData );
+            var studentValidation = new FlatFileStudentValidation();
 
-            var testDelegate = new TestDelegate( studentValidation.ValidateBellTime );
+            var testDelegate = new TestDelegate( () => studentValidation.BellTimeIsValid( studentData ) );
 
             Assert.DoesNotThrow( testDelegate );
         }

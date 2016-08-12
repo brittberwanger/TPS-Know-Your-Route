@@ -6,8 +6,8 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>69db0dc8-d9ea-4352-b0b9-3cc9064ceef1</ProjectGuid>
-    <RootNamespace>KnowYourRoute.UnitTests</RootNamespace>
+    <ProjectGuid>772f68e6-a9ac-43ae-ac53-dd416f851af5</ProjectGuid>
+    <RootNamespace>KnowYourRouteConsole</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -15,5 +15,9 @@
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <DnxInvisibleFolder Include="DirectionsResponses\Files\" />
+    <DnxInvisibleFolder Include="StaticMaps\Files\" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

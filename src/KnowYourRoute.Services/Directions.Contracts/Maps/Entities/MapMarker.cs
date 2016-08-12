@@ -7,10 +7,14 @@ namespace KnowYourRoute.Directions.Contracts.Maps.Entities
     public class MapMarker
     {
         public MapMarkerSize Size { get; set; }
+
         public MapFeatureColor Color { get; set; }
+
         // TODO: Check if null in UriParameterBuilder
         public char? Label { get; set; }
+
         public Address Address { get; set; }
+
         public Coordinates Coordinates { get; set; }
     }
 }

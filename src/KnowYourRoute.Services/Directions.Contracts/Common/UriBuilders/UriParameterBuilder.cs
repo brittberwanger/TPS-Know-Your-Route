@@ -42,5 +42,8 @@ namespace KnowYourRoute.Directions.Contracts.Common.UriBuilders
 
 
         string BuildMapPath( MapPath mapPath );
+
+
+        string BuildMapMarker( MapMarker mapMarker );
     }
 }
